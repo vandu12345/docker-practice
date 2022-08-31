@@ -8,3 +8,16 @@ before_install: 'gem install bundler --pre;
 
 script:
   - docker run -e CI=true suvvu/docker-practice npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1" # Dockerreact-env.eba-3c9s4ber.ap-south-1.elasticbeanstalk.com
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-779085018347" #Search for s3 and check others
+  bucket_path: "docker-react " #First time it will be app name
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+      
