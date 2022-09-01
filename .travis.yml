@@ -3,7 +3,7 @@ sudo: required
 services:
   - docker
 
-before_install: 'gem install bundler --pre;
+before_install:
   docker build -t suvvu/docker-practice -f frontend/Dockerfile.dev .'
 
 script:
@@ -13,12 +13,13 @@ deploy:
   provider: elasticbeanstalk
   region: "ap-south-1" # Dockerreact-env.eba-3c9s4ber.ap-south-1.elasticbeanstalk.com
   app: "docker-react"
-  env: "Dockerreact-env"
+  env: "Dockerreact-env-1"
   bucket_name: "elasticbeanstalk-ap-south-1-193016213103" #Search for s3 and check others
   bucket_path: "docker-react " #First time it will be app name
   on:
     branch: dev_branch
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: "$AWS_SECRET_KEY"
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
   edge: true
       
