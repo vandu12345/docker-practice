@@ -3,6 +3,6 @@ services:
   web:
     build:
       context: .
-      dockerfile: fronend/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - '80:80'
